@@ -25,6 +25,10 @@ public class DBConnect  {
 		Properties prop = new Properties();
 		// load database credential from local configration file
 		configFile = "app.config";
+		if (System.getenv("ENV") != null && System.getenv("ENV").equals("DEV")) {
+			configFile = "dev.app.config";
+		}
+		System.out.println(configFile);
 		try (FileInputStream fis = new FileInputStream(configFile)) {
 			prop.load(fis);
 		} catch ( Exception e) {
