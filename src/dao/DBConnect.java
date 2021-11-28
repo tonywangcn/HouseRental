@@ -33,6 +33,8 @@ public class DBConnect  {
 			prop.load(fis);
 		} catch ( Exception e) {
 			e.printStackTrace();
+			System.out.println("failed to load local config, please check it exists!");
+			System.exit(-1);
 		}
 		url = "jdbc:mysql://" + prop.getProperty("db_host") + "?autoReconnect=true&useSSL=false";
 		username = prop.getProperty("db_username");
